@@ -1,1 +1,352 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #e0f7fa;
+    color: #004d40;
+}
 
+/* Navigation Bar */
+.nav-bar {
+    background-color: #004d40;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-bar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.nav-bar a::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00c16a; /* Lighter color of the background */
+    z-index: -1;
+    transition: top 0.3s ease-in-out;
+}
+
+.nav-bar a:hover::before,
+.nav-bar .current-page a::before {
+    top: 0;
+}
+
+.nav-bar a:hover,
+.nav-bar .current-page a {
+    color: white;
+}
+
+/* Hamburger Menu */
+#page-contents {
+    position: fixed;
+    top: 40px; /* Adjusted to be just below the main nav bar */
+    left: 0;
+    width: 100%;
+    background-color: #004d40;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1001;
+    transition: height 0.3s ease-in-out; /* Smoothly expand the background */
+    height: 40px; /* Initial height */
+    overflow: hidden; /* Hide overflow */
+}
+
+#page-contents span {
+    display: flex; /* Always display the hamburger menu and "Sections" text */
+    flex-direction: column;
+    align-items: center;
+    background-color: #004d40;
+    padding: 10px;
+    border-radius: 0 0 5px 5px;
+    position: relative;
+}
+
+#page-contents span a {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#page-contents:hover {
+    height: 200px; /* Expanded height */
+}
+
+#page-contents:hover span a {
+    opacity: 1;
+    transition-delay: calc(0.1s * var(--i));
+}
+
+#page-contents a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 0;
+    font-weight: bold;
+}
+
+#page-contents a:hover {
+    text-decoration: underline;
+}
+
+/* Remove green box behind links in page-contents */
+#page-contents a::before {
+    content: none;
+}
+
+/* Line animation */
+#page-contents::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+#page-contents:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Adjust title position */
+#heading {
+    margin-top: 140px; /* Adjust based on the height of the nav bars */
+}
+
+/* Page Headers */
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #007953;
+}
+
+h2 {
+    font-size: 2em;
+    color: #004d40;
+}
+
+/* Underline Effect for Headers */
+.underline-header, .underline-subheader {
+    position: relative;
+    display: inline-block;
+}
+
+.underline-header::after, .underline-subheader::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #007953;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+}
+
+.underline-header:hover::after, .underline-subheader:hover::after {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+/* Buttons */
+.buttons {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #00794f;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s, transform 0.2s;
+    z-index: 1; /* Ensure text is above the animation */
+    white-space: nowrap; /* Ensure text is in one line */
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #004d3b;
+    z-index: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.button::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, 0);
+    transition: color 0.3s ease-in-out;
+    z-index: 2;
+    white-space: nowrap; /* Ensure text is in one line */
+}
+
+.button:hover::before {
+    transform: scaleX(1);
+}
+
+.button:hover::after {
+    color: rgba(255, 255, 255, 0.7); /* Slightly gray version of the text */
+}
+
+.button:hover {
+    color: rgba(255, 255, 255, 0); /* Hide original text */
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+/* Page Container */
+.page-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    padding: 20px;
+    padding-top: 60px; /* Adjust based on header height */
+    padding-bottom: 40px; /* Adjust based on footer height */
+}
+
+.cover {
+    text-align: center;
+    padding: 50px 20px;
+    background-co#b2dfc52dfdb;
+}
+
+.cover-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.author {
+    margin-top: 15px;
+    font-style: italic;
+    color: #555;
+}
+
+/* Tennis Ball */
+.tennis-ball-container {
+    position: absolute;
+    left: 20px;
+    top: 100px;
+    text-align: center;
+}
+
+.tennis-ball {
+    width: 50px; /* Resize to make it smaller */
+    height: 50px; /* Resize to make it smaller */
+    cursor: grab;
+    transition: transform 0.5s ease-in-out, left 0.5s ease-in-out, top 0.5s ease-in-out;
+}
+
+.tennis-ball:active {
+    cursor: grabbing;
+}
+
+.tennis-ball-text {
+    font-size: 12px;
+    font-style: italic;
+    color: grey;
+    margin-top: 5px;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #004d40;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Fixed Header and Footer */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .nav-bar {
+        flex-direction: column;
+    }
+
+    .button {
+        width: 80%;
+    }
+}

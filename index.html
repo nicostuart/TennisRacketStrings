@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How to Choose Tennis Racket Strings">
+    <link rel="stylesheet" href="styles.css">
+    <title>Choosing Tennis Racket Strings</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const ball = document.querySelector('.tennis-ball');
+            const ballContainer = document.querySelector('.tennis-ball-container');
+            let isDragging = false;
+            let offsetX, offsetY;
+            let isBouncing = false;
+
+            // Variables for customizable positioning
+            const startX = 50; // Percentage from the left
+            const startY = 65; // Percentage from the top
+
+            // Set initial position based on variables
+            ballContainer.style.left = `${startX}%`;
+            ballContainer.style.top = `${startY}%`;
+            ballContainer.style.transform = 'translate(-50%, -50%)';
+
+            ball.addEventListener('mousedown', (e) => {
+                isDragging = !isDragging;
+                if (isDragging) {
+                    offsetX = e.clientX - ball.getBoundingClientRect().left;
+                    offsetY = e.clientY - ball.getBoundingClientRect().top;
+                    ball.style.position = 'absolute';
+                    ball.style.zIndex = 1000;
+                    document.body.append(ball); // Move the ball to the end of the body to ensure it's on top
+                }
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    ball.style.left = `${e.pageX - offsetX}px`;
+                    ball.style.top = `${e.pageY - offsetY}px`;
+                }
+            });
+
+            const bounceBall = () => {
+                const ballRect = ball.getBoundingClientRect();
+                const screenWidth = window.innerWidth;
+                const screenHeight = window.innerHeight;
+                const positions = [
+                    { left: 0, top: 70 },
+                    { left: screenWidth / 2 - ballRect.width / 2, top: screenHeight / 2 - ballRect.height / 2 },
+                    { left: screenWidth - ballRect.width, top: 70 },
+                    { left: screenWidth / 2 - ballRect.width / 2, top: screenHeight / 2 - ballRect.height / 2 },
+                ];
+                let positionIndex = 0;
+
+                const moveToNextPosition = () => {
+                    if (!isBouncing) return;
+
+                    const { left, top } = positions[positionIndex];
+                    ball.style.transition = 'left 1s ease-in-out, top 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s';
+                    ball.style.left = `${left}px`;
+                    ball.style.top = `${top}px`;
+                    ball.style.transform = 'scale(1.2)';
+
+                    setTimeout(() => {
+                        ball.style.transition = 'left 1s ease-in-out, top 1s cubic-bezier(0.5, 0, 0.75, 0), transform 0.2s';
+                        ball.style.left = `${screenWidth / 2 - ballRect.width / 2}px`;
+                        ball.style.top = `${screenHeight / 2 - ballRect.height / 2}px`;
+                        ball.style.transform = 'scale(0.8)';
+
+                        setTimeout(() => {
+                            ball.style.transition = 'transform 1s';
+                            ball.style.transform = 'scale(1)';
+                            positionIndex = (positionIndex + 1) % positions.length;
+                            moveToNextPosition();
+                        }, 200);
+                    }, 1000);
+                };
+
+                moveToNextPosition();
+            };
+
+            document.addEventListener('keydown', (e) => {
+                if (e.code === 'Space' && !isBouncing) {
+                    isBouncing = true;
+                    bounceBall();
+                }
+            });
+
+            document.addEventListener('keyup', (e) => {
+                if (e.code === 'Space') {
+                    isBouncing = false;
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="page-container">
+        <header class="nav-bar fixed-header">
+            <nav>
+                <a href="index.html" class="current-page">Home</a>
+                <a href="aboutme.html">About</a>
+                <a href="TennisStrings.html">Choosing Tennis Racket Strings</a>
+            </nav>
+        </header>
+
+        <main class="cover">
+            <section>
+                <h1 class="underline-header">Choosing Tennis Racket Strings</h1>
+                <h2 class="underline-subheader">A Guide for Tennis Players, Novice to Pro!</h2>
+            </section>
+            <section class="buttons">
+                <a href="TennisStrings.html" class="button" data-text="Choosing Tennis Racket Strings">Choosing Tennis
+                    Racket Strings</a>
+                <a href="about.html" class="button" data-text="
+                About">About</a>
+            </section>
+            <br>
+            <br>
+            <section>
+                <div class="tennis-ball-container" style="position: absolute;">
+                    <img src="Tennis-Ball.png" alt="Tennis Ball" class="tennis-ball">
+                    <p class="tennis-ball-text">click on the tennis ball and then when your done, click it again and
+                        hold down the space bar!</p>
+                </div>
+                <img src="https://i.pinimg.com/originals/ed/09/c9/ed09c92c31ca4b5c0bcc6a1ae4e318be.gif"
+                    alt="Tennis Racket Striking Ball" class="cover-image">
+                <p class="author">By Nico Stuart</p>
+            </section>
+        </main>
+        <footer class="footer fixed-footer">
+            <p>&copy; 2024 Nico Stuart</p>
+        </footer>
+    </div>
+</body>
+
+</html>
