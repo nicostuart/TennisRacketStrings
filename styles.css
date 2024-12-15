@@ -99,10 +99,12 @@ body {
     text-decoration: none;
     padding: 5px 0;
     font-weight: bold;
+    position: relative;
+    display: inline-block;
 }
 
 #page-contents a:hover {
-    text-decoration: underline;
+    text-decoration: none; /* Remove underline on hover */
 }
 
 /* Remove green box behind links in page-contents */
@@ -117,9 +119,9 @@ body {
     bottom: 0;
     left: 50%;
     width: 0;
-    height: 2px;
-    background-color: white;
-    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+    height: 5px; /* Slightly thicker line */
+    background-color: white; /* White color */
+    transition: width 1.2s ease-in-out, left 1.2s ease-in-out; /* Slightly slower animation */
 }
 
 #page-contents:hover::after {
@@ -127,9 +129,30 @@ body {
     left: 0;
 }
 
+/* Box outline animation for section buttons */
+#page-contents a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.8s ease-in-out, opacity 0.8s ease-in-out; /* Smooth and slow animation */
+    opacity: 0;
+}
+
+#page-contents a:hover::after {
+    border-color: white; /* White color */
+    opacity: 1; /* Fade in smoothly */
+}
+
 /* Adjust title position */
 #heading {
     margin-top: 140px; /* Adjust based on the height of the nav bars */
+    text-align: center;
 }
 
 /* Page Headers */
@@ -158,16 +181,41 @@ h2 {
     content: '';
     position: absolute;
     width: 100%;
-    height: 2px;
+    height: 3px;
     bottom: -5px;
     left: 0;
     background-color: #007953;
     visibility: hidden;
     transform: scaleX(0);
-    transition: all 0.3s ease-in-out;
+    transition: all 0.9s ease-in-out;
 }
 
 .underline-header:hover::after, .underline-subheader:hover::after {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+/* New */
+
+.underline-mini-section {
+    position: relative;
+    display: inline-block;
+}
+
+.underline-mini-section::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: -5px;
+    left: 0;
+    background-color: #0079531b;
+    visibility: visible;
+    transform: scaleX(25);
+    transition: all 0.9s ease-in-out;
+}
+
+.underline-mini-section:hover::after {
     visibility: visible;
     transform: scaleX(1);
 }
@@ -260,7 +308,7 @@ main {
 .cover-image {
     max-width: 100%;
     height: auto;
-    margin-top: 20px;
+    margin-top: 0px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -273,7 +321,7 @@ main {
 
 /* Tennis Ball */
 .tennis-ball-container {
-    position: absolute;
+    position: relative;
     left: 20px;
     top: 100px;
     text-align: center;
@@ -349,4 +397,12 @@ th {
     .button {
         width: 80%;
     }
+}
+
+.center-header {
+    text-align: center !important;
+}
+
+.introduction {
+    text-align: center !important;
 }
