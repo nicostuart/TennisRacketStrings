@@ -390,46 +390,6 @@
                 </div>
                 <p>That's totally understandable! A lot of factors go into choosing your strings.</p>
                 <p>For a quick suggestion, take this short questionnaire.</p>
-
-                <br>
-                <br>
-
-                <form id="question-1">
-                    <h3>What stage of tennis playing would you consider yourself to be in?</h3>
-                    <input type="radio" id="beginner" name="level" value="beginner" checked="checked">
-                    <label for="beginner">Beginner</label>
-                    <br>
-                    <input type="radio" id="intermediate" name="level" value="intermediate">
-                    <label for="intermediate">Intermediate</label>
-                    <br>
-                    <input type="radio" id="advanced" name="level" value="advanced">
-                    <label for="advanced">Advanced</label>
-                    <br>
-                </form>
-
-                <form id="question-2">
-                    <h3>Do you generally prefer high tension? (high tension might shock your wrist more)</h3>
-                    <input type="radio" id="bronze-sound" name="bass-sound" value="bronze-sound" checked="checked">
-                    <label for="bronze-sound">Yes!</label>
-                    <br>
-                    <input type="radio" id="silver-sound" name="bass-sound" value="silver-sound">
-                    <label for="silver-sound">No!</label>
-                    <br>
-                </form>
-
-                <form id="question-3">
-                    <h3>How important is it to you that your strings will last a long time and will be protected against
-                        damage?
-                    </h3>
-                    <input type="radio" id="very" name="corrosiveness" value="very" checked="checked">
-                    <label for="very">Very important; would rather not buy new strings frequently.</label>
-                    <br>
-                    <input type="radio" id="not" name="corrosiveness" value="not">
-                    <label for="not">Not too important; okay with needing to replace more often.</label>
-                    <br>
-                </form>
-
-                <button id="submit-questionnaire" data-text="GIVE ME A SUGGESTION">GIVE ME A SUGGESTION</button>
             </div>
 
             <!-- questionnaire result -->
@@ -439,6 +399,57 @@
                 <img id="questionnaire-img" src="">
 
             </div>
+
+            <form id="questionnaire">
+                <div class="question">
+                    <label for="comfort">How important is comfort versus control in your game?</label>
+                    <input type="range" id="comfort" name="comfort" min="-5" max="5" value="0">
+                    <div class="slider-labels">
+                        <span>Comfort</span>
+                        <span>Neutral</span>
+                        <span>Control</span>
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="power">How powerful is your swing?</label>
+                    <input type="range" id="power" name="power" min="-5" max="5" value="0">
+                    <div class="slider-labels">
+                        <span>Weak</span>
+                        <span>Neutral/Unsure</span>
+                        <span>Powerful</span>
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="control">How much control do you have on the court?</label>
+                    <input type="range" id="control" name="control" min="-5" max="5" value="0">
+                    <div class="slider-labels">
+                        <span>Poor</span>
+                        <span>Neutral/Unsure</span>
+                        <span>Excellent</span>
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="spin">How important is spin in your game?</label>
+                    <input type="range" id="spin" name="spin" min="-5" max="5" value="0">
+                    <div class="slider-labels">
+                        <span>Not Important</span>
+                        <span>Neutral/Unsure</span>
+                        <span>Very Important</span>
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="price">How important is it to you that your strings will last a long time and will be protected against
+                        damage? (what is your price sensitivity)</label>
+                    <input type="range" id="price" name="price" min="-5" max="5" value="0">
+                    <div class="slider-labels">
+                        <span>Not Important</span>
+                        <span>Neutral/Unsure</span>
+                        <span>Very Important</span>
+                    </div>
+                </div>
+                <button type="button" id="submitBtn">Submit</button>
+            </form>
+            <script src="script.js"></script>
 
             <br>
             <br>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Recommendation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Your Recommended Tennis String</h1>
+    <p id="recommendation"></p>
+    <script>
+        // Get string recommendation from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const stringRecommendation = urlParams.get("string");
+
+        // Display recommendation
+        document.getElementById("recommendation").textContent = stringRecommendation;
+    </script>
+</body>
+</html>
