@@ -151,7 +151,7 @@ body {
 
 /* Adjust title position */
 #heading {
-    margin-top: 140px; /* Adjust based on the height of the nav bars */
+    margin-top: 80px; /* Adjust based on the height of the nav bars */
     text-align: center;
 }
 
@@ -311,6 +311,27 @@ main {
     margin-top: -30px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.cover-image:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+
+.small-img {
+    display: block;
+    margin: 20px auto;
+    max-width: 80%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.small-img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.1);
 }
 
 .author {
@@ -359,7 +380,7 @@ th, td {
 }
 
 th {
-    background-color: #007bff;
+    background-color: #004d40; /* Dark green color */
     color: white;
 }
 
