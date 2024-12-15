@@ -211,7 +211,7 @@ h2 {
     left: 0;
     background-color: #0079531b;
     visibility: visible;
-    transform: scaleX(25);
+    transform: scaleX(5);
     transition: all 0.9s ease-in-out;
 }
 
