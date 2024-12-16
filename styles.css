@@ -305,6 +305,10 @@ main {
     background-co#b2dfc52dfdb;
 }
 
+.me-pic {
+    margin: auto;
+}
+
 .cover-image {
     max-width: 100%;
     height: auto;
@@ -428,6 +432,9 @@ th {
     text-align: center !important;
 }
 
+.center-align {
+    text-align: center;
+}
 
 form {
     max-width: 600px;
