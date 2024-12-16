@@ -8,6 +8,10 @@ body {
     color: #004d40;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* Navigation Bar */
 .nav-bar {
     background-color: #004d40;

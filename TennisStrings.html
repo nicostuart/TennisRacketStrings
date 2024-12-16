@@ -19,7 +19,7 @@
             </nav>
         </header>
 
-        <main>
+        <main id="main-content">
             <div class="nav-bar" id="page-contents">
                 <span><b>☰ SECTIONS</b></span>
                 <span>
@@ -366,10 +366,12 @@
                     <p>
                         High tension strings provide more control and spin potential, rendering them a better option for
                         advanced
-                        players who generate their own power. Advanced players also benefit as the They offer a firmer
-                        feel and are less forgiving on
-                        off-center hits. [ADD IN HOW THEY ARE LESS COMFORTABLE AND THAT PLAYERS WHO ARE BETTER AND
-                        PLAYING WITH QUICKER SHOTS WILL WANT FIRMER STRINGS SO THE BALL DOESN'T GO TOO FAST].
+                        players who generate their own power. Advanced players also benefit as the higher tension can
+                        absorb the power of their opponent's shot. This is surprisingly important as a low tension
+                        racket returning a very fast shot may send the ball flying out of bounds on the court. It must
+                        also be noted that high tension strings firmer
+                        feel (some consider this uncomfortable on their hands and arms) and are less forgiving on
+                        off-center hits.
                         <br>
                         <br>
                         Higher tension typically ranges from 55-70 lbs, with tensions greater than 65 typically reserved
@@ -390,10 +392,12 @@
                     <br>
                     <h3>What Tension Is Best?</h3>
                     <p>
-                        As is likely clear, there is no simple answer for the optimal tennis racket string tension.
-                        For beginner players, medium tension strings are a great starting point as they offer a good
-                        balance of power and control. As you gain experience, you can experiment with different tensions
-                        to find what works best for your playing style.
+                        As is likely clear, there is no simple answer for the optimal tennis racket string tension. The
+                        goal of this portion is to inform your decision and help you understand the complex dynamics of
+                        the strings. The questionnaire at the end of this page will help take you to the next step and
+                        lead you to a string that can fit your preferences.
+                        Furthermore, as you gain experience, you might consider experimenting with a variety of tensions
+                        to find what works best for your unique playing style. There is surely no "one-size-fits-all!"
                     </p>
                 </div>
 
@@ -401,12 +405,21 @@
                     <br>
                     <h3>A Brief Note on Durability</h3>
                     <p>
-                        Should replace your strings however many times a year as you play per week - granted for more
-                        advanced players potentially do this more often and for newer players you can do this more
-                        infrequently. FILL HERE
-                    </p>
-                    <p>
-                        FILL HERE
+                        While we considered how each tennis racket string can impact play, strings are not cheap.
+                        Typically strings range in price from roughly $10 to $30, with the labor cost to restring it
+                        another $20 to $30. An expensive machine is required to string rackets, so it is generally not
+                        possible to restring a racket yourself.
+
+                        <br>
+                        <br>
+                        During play, strings may snap apart as a result of natural wear and tear. It is, however,
+                        generally advised that players should replace their strings however many times a year as they
+                        play per week. In other words, if you play tennis five times per week, you can expect to have
+                        your racket restrung five times in a year.
+                        While this rule of thumb holds true for intermediate players, newer players can
+                        expect to restring their rackets fewer than this number and advanced players may need more
+                        frequent restringings. For example, a newer player may only
+                        need to restring their racket once or twice a year.
                     </p>
                 </div>
             </div>
@@ -420,9 +433,12 @@
                     <h2 class="underline-subheader">CONCLUSION</h2>
                 </div>
                 <p>
-                    Choosing the right tennis strings can greatly impact your performance on the court. For beginners,
-                    medium tension strings are a great starting point, offering a balance of power and control. Advanced
-                    players may benefit from high tension strings for added control and spin potential.
+                    Choosing the right tennis strings can drastically impact your performance on the court.
+                    This website overview can help to orient players unfamiliar with the dynamics of tennis racket
+                    strings, pointing you in the right direction. Understanding the strings can also help players better
+                    understand the dynamics of their swings and why their shots may be behaving in a certain way or another.
+                    
+
                     [FIX THIS]
                 </p>
                 <p>
@@ -506,6 +522,23 @@
                 <button type="button" id="submitBtn">Submit</button>
             </form>
             <script src="script.js"></script>
+            <script>
+                document.querySelectorAll('#page-contents a').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        const headerOffset = document.querySelector('.fixed-header').offsetHeight + 30; // Slightly increased offset
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition - headerOffset;
+
+                        window.scrollBy({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+            </script>
 
             <br>
             <br>
