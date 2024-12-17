@@ -3,19 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>String Recommendation</title>
+    <title>Results</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Header bar with navigation links -->
+    <header class="nav-bar fixed-header">
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="aboutme.html">ABOUT</a>
+            <a href="TennisStrings.html">CHOOSING STRINGS</a>
+        </nav>
+    </header>
+    <br>
     <h1>Your Recommended Tennis String</h1>
-    <p id="recommendation"></p>
+    <!-- Output description -->
+    <p id="stringDescription" style="text-align: center; font-size: 1.2em; margin: 20px;"></p>
+
+    <!-- String Image -->
+    <img id="stringImage" src="" alt="String Image" style="max-width: 300px; display: block; margin: 0 auto;">
+
+    <!-- Purchase link -->
+    <p style="text-align: center;">
+        <a id="purchaseLink" href="#" target="_blank" style="display: inline-block; margin-top: 20px; color: blue; text-decoration: underline; font-weight: bold;">
+            Click Here to Purchase Your Strings!
+        </a>
+    </p>
+
     <script>
-        // Get string recommendation from URL
+        // Retrieve query parameters
         const urlParams = new URLSearchParams(window.location.search);
         const stringRecommendation = urlParams.get("string");
+        const imageSrc = urlParams.get("image");
 
-        // Display recommendation
-        document.getElementById("recommendation").textContent = stringRecommendation;
+        // Map strings to descriptions
+        const stringDescriptions = {
+            "Polyester": "I recommend you check out the ALU Power 125 Polyester Tennis String! If you have a stronger swing, this will certainly supplement your game with much needed control. I recommend tightening this to 45 to 50 lbs, but you will certainly want to experiment a little bit before landing on a tension.",
+            "Natural Gut": "I recommend you check out the Gamma (natural) Gut 16s. These are a great choice for a much more comfortable and forgiving experience. You can also expect to get some serious power output out of these. Be sure to also purchase a racket cover as these strings can be quite sensitive to moisture!",
+            "Synthetic Gut": "I recommend you get the Prince Synthetic Gut 17s. It is great for beginner and intermediate tennis players and is truly one of the most solid all-around tennis strings that is available for purchase. No wonder it is so highly popular right now! It is also a very affordable option and a terrific starting place!",
+            "Multifilament": "I recommend you get the NXT 16s multifilament strings from Wilson. One of the best name-brand companies in the tennis racket business, this string has been recommended to me numerous times. In fact, I actually used this string for many years while in middle school! This will give you a softer touch, akin to the natural gut while also providing more tension maintenance, giving you some of the best of both worlds!"
+        };
+
+        // Map strings to their purchase links
+        const purchaseLinks = {
+            "Natural Gut": "https://tennisexpress.com/products/gamma-gut-tennis-string-natural-65769?gad_source=1&gclid=Cj0KCQiAvP-6BhDyARIsAJ3uv7aosgqUBpxXUdhan5A4Q_nh5ochQoo_AXMKIcdIoiv1txPOarjr04EaAhszEALw_wcB",
+            "Synthetic Gut": "https://a.co/d/8IOfcMh",
+            "Multifilament": "https://www.wilson.com/en-us/product/nxt-16-set-wr8312000#colors=119863",
+            "Polyester": "https://www.luxilon.com/en-us/product/alu-power-125-set-rz99203?srsltid=AfmBOorxlyy3dCcnY5QIJCxX3NgkQLE_vKMKMaVVkNDjDFSc_dpGnq1t#colors=71776"
+        };
+
+        // Set image source and description
+        const stringImage = document.getElementById("stringImage");
+        const stringDescription = document.getElementById("stringDescription");
+        const purchaseLink = document.getElementById("purchaseLink");
+
+        if (stringDescriptions[stringRecommendation]) {
+            stringDescription.textContent = stringDescriptions[stringRecommendation];
+            stringImage.src = imageSrc;
+            purchaseLink.href = purchaseLinks[stringRecommendation];
+        } else {
+            stringDescription.textContent = "Sorry, we could not determine a recommendation for you.";
+            purchaseLink.style.display = "none";
+        }
     </script>
 </body>
 </html>
